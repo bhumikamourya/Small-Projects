@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Page-> Alarm application</title>
+    <link rel="stylesheet" href="/css/alarm.css" />
+</head>
+
+<body>
+    <div class="alarm-container">
+    <h1>Alarm</h1>
+    <div class="cards">
+        <% for(alarm of alarms){%>
+            <div class="card">
+                <h2>
+                    <%=alarm.tob %>
+                </h2>
+                <P>
+                    <%=alarm.scheduale%>
+                </P>
+                <form>
+                    <input type="checkbox" class="box" /><br>
+                    <br>
+                    <a href="http://localhost:8080/alarms/edit" class="edit-btn">Edit</a>
+                    <!-- <form method="post" action="/alarms?method=DELETE">
+                        <button>Delete</button>
+                    </form> -->
+
+                </form>
+            </div>
+            <%}%>
+    </div>
+    <a href="http://localhost:8080/alarms/new" class="btn">Create new alarm button</a>
+</div>
+</body>
+
+</html>

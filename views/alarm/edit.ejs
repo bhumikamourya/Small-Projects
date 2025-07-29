@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit alarms</title>
+    <link rel="stylesheet" href="/css/alarm.css" />
+
+</head>
+
+<body>
+    <div class="create-new">
+    <h2>Edit Alarms</h2>
+    <form method="post" action="/alarms?_method=PUT">
+        <input placeholder="Set-time" type="time" name="tob" <%=alarm.tob %> class="create-btns"/>
+        <select name="scheduale" class="create-btns">
+            <%=alarm.scheduale %>
+            <option>Once</option>
+            <option>Daily</option>
+            <option>Mon-Fri</option>
+            <option>Custom</option>
+        </select>
+        <button class="create-btns" style="background-color: rgb(3, 147, 3);">Save</button>
+    </form>
+    </div>
+</body>
+
+</html>

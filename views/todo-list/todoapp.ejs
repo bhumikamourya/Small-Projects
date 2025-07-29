@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-APP -> Using JS</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(238, 237, 237);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }div{
+        width: 100%;
+        height :auto;
+        background-color: rgb(227, 224, 224);
+        padding: 1rem;
+        margin: 2rem;
+        border-radius: 10px ;
+    }
+    h1{
+        text-align: center;
+    }
+    input{
+        border: 1px solid rgb(216, 214, 214);
+        padding:0.8rem 1rem;
+         border-radius: 7px ;
+    }
+    button{
+        padding: 0.5rem 1rem;
+        margin-left: 20px;
+        border: none;
+         border-radius: 7px ;
+         background-color: rgb(64, 64, 64);
+         color: white;
+    }
+   
+</style>
+</head>
+<body>
+    <main>
+    <div>
+        <h1>Todo App</h1><hr>
+        <input placeholder="Enter your tasks">
+        <button>Add task</button>
+        <ul>
+            <li>eat&nbsp;&nbsp;&nbsp;<button class="delete">delete</button></li>
+            <li>sleep&nbsp;&nbsp;&nbsp;<button class="delete">delete</button></li>
+        </ul>
+    </div>
+    </main>
+</body>
+
+</html>
+</body>
+<script>let btn = document.querySelector("button");
+let ul = document.querySelector(" ul");
+let li = document.querySelector("li");
+let h1 = document.querySelector("h1");
+let inp = document.querySelector("input");
+
+btn.addEventListener("click", function () {
+    let item = document.createElement("li");
+    item.innerText = inp.value;
+
+    let delbtn = document.createElement("button");
+    delbtn.innerText = "delete";
+    delbtn.classList.add();
+
+    item.appendChild(delbtn);
+    ul.appendChild(item);
+    inp.value = "";
+});
+
+ul.addEventListener("click",function(event){
+    if(event.target.nodeName == "BUTTON"){
+        let listitem= event.target.parentElement;
+        listitem.remove();
+
+    }
+    
+    console.log("clicked");
+})
+</script>

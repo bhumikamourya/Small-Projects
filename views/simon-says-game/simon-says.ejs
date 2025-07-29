@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon says game</title>
+    <link rel="stylesheet" href="/css/simon-says-game.css" />
+</head>
+
+<body>
+    <h1>Simon says game</h1>
+    <h2> Press any key to start the game</h2>
+    <div class="btn-container">
+        <div class="line-one">
+            <div class="btn red" type="button" id="red"></div>
+            <div class="btn yellow" type="button" id="yellow"></div>
+        </div>
+        <div class="line-two">
+            <div class="btn green" type="button" id="green"></div>
+            <div class="btn purple" type="button" id="purple"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let gameSeq = [];  //empty
+let userSeq = [];  // empty
+
+let btns = ["red", "green", "purple", "yellow"];
+
+let started = false;
+let level = 0;   // initial level
+
+let h2 = document.querySelector("h2");
+
+document.addEventListener("keypress", function () {  // to start the game
+    if (started == false) {
+        console.log("Game is Started");
+        started = true;
+
+        levelUp();
+    }
+});
+function btnflash(btn) {    //btn press hone pr flash hone ke liye
+    btn.classList.add("flash");
+    setTimeout(function () {
+        btn.classList.remove("flash");
+    }, 200);
+}
+function userflash(btn) {   // user ke click karne pr flash hone ke liye
+    btn.classList.add("userflash");
+    setTimeout(function () {
+        btn.classList.remove("userflash");
+    }, 200);
+}
+
+
+function levelUp() { // level ko aage badhane  ke liye
+    userSeq = [];
+    level++;
+    h2.innerText = `Level ${level}`;
+
+    let randIdx = Math.floor(Math.random() * 3); //random idx, color, btn generate karne ke liye
+    let randColor = btns[randIdx];
+    let randBtn = document.querySelector(`.${randColor}`);
+    // console.log(` idx : ${randIdx} , color : ${randColor} , btn : ${randBtn}`);
+
+    gameSeq.push(randColor);
+    console. log(gameSeq);
+    //random btn choose
+    btnflash(randBtn);
+}
+
+function checkAns(idx){   // ans check karne ke liye
+    if(userSeq[idx] == gameSeq[idx]){
+        if(userSeq.length == gameSeq.length){
+            setTimeout(levelUp , 800);
+        }
+    }else{
+        h2.innerHTML=`Game Over! Your score was <b>${level}</b><br>Press Any key To Start.`;
+        document.querySelector("body").style.backgroundColor = "red";
+        setTimeout(function(){
+            document.querySelector("body").style.backgroundColor = "white";
+        } ,100);
+        reset();
+    }
+}
+
+function btnpress() {
+    let btn = this;
+    userflash(btn);
+
+    userColor = btn.getAttribute("id");
+    userSeq.push(userColor);
+
+    checkAns(userSeq.length-1);
+}
+let Allbtn = document.querySelectorAll(".btn");
+for (btn of Allbtn) {
+    btn.addEventListener("click", btnpress);
+}
+function reset(){ // to restart the game
+    started = false;
+    gameSeq = [];
+    userSeq = [];
+    level = 0;
+}
+
+
+</script>
