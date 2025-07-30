@@ -6,48 +6,74 @@
     <title>TODO-APP -> Using JS</title>
     <style>
     body {
-        margin: 0;
-        padding: 0;
-        background-color: rgb(238, 237, 237);
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }div{
-        width: 100%;
-        height :auto;
-        background-color: rgb(227, 224, 224);
-        padding: 1rem;
-        margin: 2rem;
-        border-radius: 10px ;
-    }
+  font-family: "Montserrat", serif;
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app-container{
+    width: 40%;
+    height: auto;
+    background-image: linear-gradient(rgb(49, 49, 49) , black , rgb(18, 18, 63) , black);
+    box-shadow: 1px 1px 10px  rgb(61, 62, 62);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-top: 10rem;
+}
     h1{
         text-align: center;
     }
-    input{
-        border: 1px solid rgb(216, 214, 214);
-        padding:0.8rem 1rem;
-         border-radius: 7px ;
-    }
-    button{
-        padding: 0.5rem 1rem;
-        margin-left: 20px;
+ 
+     .input-container{
+        display: flex;
+        justify-content: space-around;
+        height: 40px;
+     }
+     .input-container input{
+        background-color: transparent;
+        width: 70%;
+        border: 1px solid rgb(70, 69, 69);
+        opacity: 0.8;
+         border-radius: 5px;
+          padding-left:1rem;
+          color: white;
+     }
+  li{
+    background-color: rgb(24, 24, 39);
+    box-shadow: 4px 4px 7px rgb(44, 45, 45);
+    border-radius: 30px;
+    padding: 0.7rem;
+    display: flex;
+    justify-content: space-around; 
+    margin: 1rem;
+    font-size: 19px;
+  }
+  button{
+       border-radius: 5px;
         border: none;
-         border-radius: 7px ;
-         background-color: rgb(64, 64, 64);
-         color: white;
-    }
-   
+         padding: 0.5rem 1rem;
+         background-color: rgb(193, 192, 192);
+}
 </style>
 </head>
 <body>
     <main>
-    <div>
+    <div class="app-container">
         <h1>Todo App</h1><hr>
+        <br>
+        <div class="input-container">
         <input placeholder="Enter your tasks">
         <button>Add task</button>
-        <ul>
-            <li>eat&nbsp;&nbsp;&nbsp;<button class="delete">delete</button></li>
-            <li>sleep&nbsp;&nbsp;&nbsp;<button class="delete">delete</button></li>
+        </div>
+        <ul >
+            <li>eat<button class="delete">delete</button></li>
+            <li>sleep<button class="delete">delete</button></li>
         </ul>
     </div>
     </main>
